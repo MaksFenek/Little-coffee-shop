@@ -9,6 +9,10 @@ interface IWelcomePage {}
 const WelcomePage: React.FC<IWelcomePage> = ({}) => {
   const navigation = useNavigation<Props>()
 
+  const handlePress = (): void => {
+    navigation.navigate('SignUp')
+  }
+
   return (
     <SafeAreaView style={styles.bg}>
       <Image style={styles.bgImage} source={require('../../assets/bg.png')} />
@@ -21,7 +25,16 @@ const WelcomePage: React.FC<IWelcomePage> = ({}) => {
           The Little Coffee Shop serves specialty {'\n'} coffee, fancy grilled
           sandwiches, {'\n'} scratch cooking, craft ales, and cider.
         </Text>
-        <Button buttonStyle={styles.button} title="Sign in" />
+        <Button
+          buttonStyle={styles.button}
+          onPress={handlePress}
+          title="Sign up"
+        />
+        <Button
+          buttonStyle={styles.signIn}
+          onPress={handlePress}
+          title="Sign in"
+        />
       </View>
     </SafeAreaView>
   )
@@ -58,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   descriptionContainer: {
-    flex: 0.4,
+    flex: 0.6,
     justifyContent: 'space-around',
   },
   img: {
@@ -74,7 +87,10 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#0D9F67',
-    color: 'black',
+    height: 60,
+  },
+  signIn: {
+    backgroundColor: '#3B5998',
     height: 60,
   },
 })

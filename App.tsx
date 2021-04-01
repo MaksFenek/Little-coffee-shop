@@ -6,10 +6,12 @@ import {
   createStackNavigator,
   StackNavigationProp,
 } from '@react-navigation/stack'
+import SignUpPage from './src/components/pages/SignUpPage'
 
 export type RootStackParamList = {
   Welcome: undefined
   SignUp: undefined
+  SignIn: undefined
 }
 export type Props = StackNavigationProp<RootStackParamList>
 
@@ -23,6 +25,30 @@ const App: React.FC = () => {
           name="Welcome"
           options={{headerShown: false}}
           component={WelcomePage}
+        />
+        <Stack.Screen
+          name="SignUp"
+          options={{
+            headerTransparent: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Sign Up',
+            headerTitleStyle: {
+              color: '#fff',
+            },
+          }}
+          component={SignUpPage}
+        />
+        <Stack.Screen
+          name="SignIn"
+          options={{
+            headerTransparent: true,
+            headerTitleAlign: 'center',
+            headerTitle: 'Sign In',
+            headerTitleStyle: {
+              color: '#fff',
+            },
+          }}
+          component={SignUpPage}
         />
       </Stack.Navigator>
     </NavigationContainer>
