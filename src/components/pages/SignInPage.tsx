@@ -8,18 +8,10 @@ const SignInPage = () => {
     <SafeAreaView style={styles.main}>
       <SignHeader />
       <KeyboardAvoidingView style={styles.form}>
-        <Input
-          style={styles.input}
-          autoCompleteType="username"
-          placeholder="Username"
-        />
-        <Input
-          style={styles.input}
-          autoCompleteType="password"
-          placeholder="Password"
-        />
-        <Button buttonStyle={styles.button} title="Sign up" />
+        <Input autoCompleteType="username" placeholder="Username" />
+        <Input autoCompleteType="password" placeholder="Password" />
       </KeyboardAvoidingView>
+      <Button buttonStyle={styles.button} title="Sign up" />
     </SafeAreaView>
   )
 }
@@ -35,14 +27,7 @@ const styles = StyleSheet.create({
   },
   form: {
     flex: 0.5,
-    padding: 20,
     justifyContent: 'center',
-  },
-  input: {
-    borderStyle: 'solid',
-    borderColor: '#B7B7B7',
-    borderWidth: 1,
-    padding: 10,
   },
   button: {
     height: 60,
