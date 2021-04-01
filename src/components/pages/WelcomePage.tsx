@@ -9,8 +9,12 @@ interface IWelcomePage {}
 const WelcomePage: React.FC<IWelcomePage> = ({}) => {
   const navigation = useNavigation<Props>()
 
-  const handlePress = (): void => {
+  const handleSignUp = (): void => {
     navigation.navigate('SignUp')
+  }
+
+  const handleSignIn = (): void => {
+    navigation.navigate('SignIn')
   }
 
   return (
@@ -27,12 +31,12 @@ const WelcomePage: React.FC<IWelcomePage> = ({}) => {
         </Text>
         <Button
           buttonStyle={styles.button}
-          onPress={handlePress}
+          onPress={handleSignUp}
           title="Sign up"
         />
         <Button
           buttonStyle={styles.signIn}
-          onPress={handlePress}
+          onPress={handleSignIn}
           title="Sign in"
         />
       </View>
@@ -90,7 +94,6 @@ const styles = StyleSheet.create({
     height: 60,
   },
   signIn: {
-    backgroundColor: '#3B5998',
     height: 60,
   },
 })

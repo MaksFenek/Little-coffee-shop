@@ -7,6 +7,7 @@ import {
   StackNavigationProp,
 } from '@react-navigation/stack'
 import SignUpPage from './src/components/pages/SignUpPage'
+import SignInPage from './src/components/pages/SignInPage'
 
 export type RootStackParamList = {
   Welcome: undefined
@@ -48,7 +49,7 @@ const App: React.FC = () => {
               color: '#fff',
             },
           }}
-          component={SignUpPage}
+          component={SignInPage}
         />
       </Stack.Navigator>
     </NavigationContainer>

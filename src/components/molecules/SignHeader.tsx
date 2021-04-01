@@ -17,7 +17,6 @@ const SignHeader: React.FC<ISignHeader> = ({...props}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 0.5,
-    // alignItems: 'center',
     justifyContent: 'center',
   },
   bg: {
