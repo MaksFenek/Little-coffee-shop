@@ -1,12 +1,13 @@
 import React from 'react'
-import {StyleSheet, SafeAreaView, Image, ScrollView} from 'react-native'
+import {StyleSheet, SafeAreaView, KeyboardAvoidingView} from 'react-native'
 import {Input, Button} from 'react-native-elements'
+import SignHeader from '../molecules/SignHeader'
 
 const SignUpPage = () => {
   return (
     <SafeAreaView style={styles.main}>
-      <Image style={styles.bg} source={require('../../assets/SignUpBg.jpg')} />
-      <ScrollView style={styles.form}>
+      <SignHeader />
+      <KeyboardAvoidingView style={styles.form}>
         <Input
           style={styles.input}
           autoCompleteType="name"
@@ -27,7 +28,7 @@ const SignUpPage = () => {
           autoCompleteType="password"
           placeholder="Password"
         />
-      </ScrollView>
+      </KeyboardAvoidingView>
       <Button buttonStyle={styles.button} title="Sign up" />
     </SafeAreaView>
   )
@@ -39,15 +40,11 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
   },
-  bg: {
-    flex: 0.9,
-  },
   form: {
     flex: 0.5,
+    justifyContent: 'space-around',
   },
-  input: {
-    height: 60,
-  },
+  input: {},
   button: {
     height: 60,
     backgroundColor: '#0D9F67',
