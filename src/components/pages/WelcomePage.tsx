@@ -1,8 +1,14 @@
+import {useNavigation} from '@react-navigation/native'
 import React from 'react'
 import {Image, SafeAreaView, StyleSheet, View, Text} from 'react-native'
 import {Button} from 'react-native-elements'
+import {Props} from '../../../App'
 
-const WelcomePage: React.FC = () => {
+interface IWelcomePage {}
+
+const WelcomePage: React.FC<IWelcomePage> = ({}) => {
+  const navigation = useNavigation<Props>()
+
   return (
     <SafeAreaView style={styles.bg}>
       <Image style={styles.bgImage} source={require('../../assets/bg.png')} />
@@ -35,7 +41,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    zIndex: 0,
+    zIndex: -1,
   },
   overlay: {
     position: 'absolute',
@@ -44,7 +50,7 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     backgroundColor: 'rgba(48,49,50,0.8)',
-    zIndex: 1,
+    zIndex: 0,
   },
   imgContainer: {
     flex: 0.7,
@@ -69,7 +75,6 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#0D9F67',
     color: 'black',
-    borderRadius: 0,
     height: 60,
   },
 })
