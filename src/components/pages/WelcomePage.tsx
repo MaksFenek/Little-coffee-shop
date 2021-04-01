@@ -1,6 +1,13 @@
 import {useNavigation} from '@react-navigation/native'
 import React from 'react'
-import {Image, SafeAreaView, StyleSheet, View, Text} from 'react-native'
+import {
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+  ImageBackground,
+} from 'react-native'
 import {Button} from 'react-native-elements'
 import {Props} from '../../../App'
 
@@ -19,27 +26,29 @@ const WelcomePage: React.FC<IWelcomePage> = ({}) => {
 
   return (
     <SafeAreaView style={styles.bg}>
-      <Image style={styles.bgImage} source={require('../../assets/bg.png')} />
-      <View style={styles.overlay} />
-      <View style={styles.imgContainer}>
-        <Image style={styles.img} source={require('../../assets/logo.png')} />
-      </View>
-      <View style={styles.descriptionContainer}>
-        <Text style={styles.text}>
-          The Little Coffee Shop serves specialty {'\n'} coffee, fancy grilled
-          sandwiches, {'\n'} scratch cooking, craft ales, and cider.
-        </Text>
-        <Button
-          buttonStyle={styles.button}
-          onPress={handleSignUp}
-          title="Sign up"
-        />
-        <Button
-          buttonStyle={styles.signIn}
-          onPress={handleSignIn}
-          title="Sign in"
-        />
-      </View>
+      <ImageBackground
+        style={styles.bgImage}
+        source={require('../../assets/bg.jpg')}>
+        <View style={styles.imgContainer}>
+          <Image style={styles.img} source={require('../../assets/logo.png')} />
+        </View>
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.text}>
+            The Little Coffee Shop serves specialty {'\n'} coffee, fancy grilled
+            sandwiches, {'\n'} scratch cooking, craft ales, and cider.
+          </Text>
+          <Button
+            buttonStyle={styles.button}
+            onPress={handleSignUp}
+            title="Sign up"
+          />
+          <Button
+            buttonStyle={styles.signIn}
+            onPress={handleSignIn}
+            title="Sign in"
+          />
+        </View>
+      </ImageBackground>
     </SafeAreaView>
   )
 }
@@ -60,15 +69,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: -1,
   },
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(48,49,50,0.8)',
-    zIndex: 0,
-  },
   imgContainer: {
     flex: 0.7,
     alignItems: 'center',
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   },
   descriptionContainer: {
     flex: 0.6,
+    padding: 20,
     justifyContent: 'space-around',
   },
   img: {
