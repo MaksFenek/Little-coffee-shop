@@ -9,10 +9,7 @@ import {
 import SignUpPage from 'components/pages/SignUpPage'
 import SignInPage from 'components/pages/SignInPage'
 import {Provider} from 'react-redux'
-import {createStore, applyMiddleware} from 'redux'
-import createSagaMiddleware from 'redux-saga'
-import rootReducer from 'redux/reducers'
-import {helloSaga} from 'redux/sagas/userSaga'
+import store from 'redux/reducers'
 
 export type RootStackParamList = {
   Welcome: undefined
@@ -22,11 +19,6 @@ export type RootStackParamList = {
 export type Props = StackNavigationProp<RootStackParamList>
 
 const Stack = createStackNavigator<RootStackParamList>()
-
-const sagaMiddleware = createSagaMiddleware()
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
-
-sagaMiddleware.run(helloSaga)
 
 const App: React.FC = () => {
   return (

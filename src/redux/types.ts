@@ -1,10 +1,14 @@
 import Constants from './constants'
 
-export type RootActionPayloads = {}
+export type UserActionPayloads = {}
 
-export type Payloads = RootActionPayloads
+export type Payloads = UserActionPayloads
 
-export interface IRootReducerState {
+export interface RootReducerInterface {
+  user: IUserReducerState
+}
+
+export interface IUserReducerState {
   user: string
 }
 
@@ -15,8 +19,4 @@ export interface Action<T = string | number | undefined> {
 export interface ReducerOptions<T = Payloads | undefined> {
   type: Constants
   payload?: T
-}
-
-export interface IRootReducerState {
-  user: string
 }

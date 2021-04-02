@@ -1,22 +1,18 @@
-import {
-  IRootReducerState,
-  ReducerOptions,
-  RootActionPayloads,
-} from 'redux/types'
-import Constants from '../constants'
+import {applyMiddleware, combineReducers} from 'redux'
+import {createStore} from 'redux'
 
-const initialState: IRootReducerState = {
-  user: 'user',
-}
+import createSagaMiddleware from 'redux-saga'
+import userReducer from 'redux/reducers/userReducer'
+import {helloSaga} from 'redux/sagas/userSaga'
+import {RootReducerInterface} from 'redux/types'
 
-export default (
-  state = initialState,
-  {type, payload}: ReducerOptions<RootActionPayloads>,
-): IRootReducerState => {
-  switch (type) {
-    case Constants.GET_USER:
-      return {...state, user: 'hello'}
-    default:
-      return state
-  }
-}
+const rootReducer = combineReducers<RootReducerInterface>({
+  user: userReducer,
+})
+
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
+
+sagaMiddleware.run(helloSaga)
+
+export default store
