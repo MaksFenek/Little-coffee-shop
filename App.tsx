@@ -1,13 +1,13 @@
 import 'react-native-gesture-handler'
 import React from 'react'
-import WelcomePage from './src/components/pages/WelcomePage'
+import WelcomePage from 'components/pages/WelcomePage'
 import {NavigationContainer} from '@react-navigation/native'
 import {
   createStackNavigator,
   StackNavigationProp,
 } from '@react-navigation/stack'
-import SignUpPage from './src/components/pages/SignUpPage'
-import SignInPage from './src/components/pages/SignInPage'
+import SignUpPage from 'components/pages/SignUpPage'
+import SignInPage from 'components/pages/SignInPage'
 
 export type RootStackParamList = {
   Welcome: undefined

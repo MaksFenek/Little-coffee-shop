@@ -8,8 +8,8 @@ const SignHeader: React.FC<ISignHeader> = ({...props}) => {
     <View style={styles.container} {...props}>
       <ImageBackground
         style={styles.bg}
-        source={require('../../assets/SignUpBg.jpg')}>
-        <Image style={styles.logo} source={require('../../assets/logo.png')} />
+        source={require('assets/SignUpBg.jpg')}>
+        <Image style={styles.logo} source={require('assets/logo.png')} />
       </ImageBackground>
     </View>
   )

@@ -26,11 +26,9 @@ const WelcomePage: React.FC<IWelcomePage> = ({}) => {
 
   return (
     <SafeAreaView style={styles.bg}>
-      <ImageBackground
-        style={styles.bgImage}
-        source={require('../../assets/bg.jpg')}>
+      <ImageBackground style={styles.bgImage} source={require('assets/bg.jpg')}>
         <View style={styles.imgContainer}>
-          <Image style={styles.img} source={require('../../assets/logo.png')} />
+          <Image style={styles.img} source={require('assets/logo.png')} />
         </View>
         <View style={styles.descriptionContainer}>
           <Text style={styles.text}>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {StyleSheet, SafeAreaView, KeyboardAvoidingView} from 'react-native'
 import {Input, Button} from 'react-native-elements'
-import SignHeader from '../molecules/SignHeader'
+import SignHeader from 'components/molecules/SignHeader'
 
 const SignUpPage = () => {
   return (

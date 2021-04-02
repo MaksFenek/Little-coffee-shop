@@ -1,6 +1,6 @@
 import React from 'react'
 import {StyleSheet, SafeAreaView, KeyboardAvoidingView} from 'react-native'
-import SignHeader from '../molecules/SignHeader'
+import SignHeader from 'components/molecules/SignHeader'
 import {Input, Button} from 'react-native-elements'
 
 const SignInPage = () => {
@@ -11,7 +11,7 @@ const SignInPage = () => {
         <Input autoCompleteType="username" placeholder="Username" />
         <Input autoCompleteType="password" placeholder="Password" />
       </KeyboardAvoidingView>
-      <Button buttonStyle={styles.button} title="Sign up" />
+      <Button buttonStyle={styles.button} title="Sign in" />
     </SafeAreaView>
   )
 }
