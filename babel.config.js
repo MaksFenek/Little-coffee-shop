@@ -5,18 +5,11 @@ module.exports = {
       'module-resolver',
       {
         root: ['./src'],
-        extensions: [
-          '.android.ts',
-          '.ts',
-          '.android.tsx',
-          '.tsx',
-          '.jsx',
-          '.js',
-          '.json',
-        ],
+        extensions: ['.ts', '.tsx', '.jsx', '.js', '.json'],
         alias: {
           assets: './src/assets',
           components: './src/components',
+          '@redux': './src/redux',
         },
       },
     ],
