@@ -10,6 +10,7 @@ module.exports = {
           assets: './src/assets',
           components: './src/components',
           '@redux': './src/redux',
+          api: './src/api',
         },
       },
     ],

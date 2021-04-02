@@ -1,3 +1,4 @@
+import Constants from 'redux/constants'
 import {
   IUserReducerState,
   ReducerOptions,
@@ -5,7 +6,10 @@ import {
 } from 'redux/types'
 
 const initialState: IUserReducerState = {
-  user: '',
+  email: '',
+  password: '',
+  name: '',
+  username: '',
 }
 
 export default (
@@ -13,6 +17,8 @@ export default (
   {type, payload}: ReducerOptions<UserActionPayloads>,
 ): IUserReducerState => {
   switch (type) {
+    case Constants.SET_USER:
+      return {...state, ...payload}
     default:
       return state
   }

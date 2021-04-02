@@ -1,6 +1,6 @@
-import {Action} from 'redux/types'
+import {Action, SetUserPayload} from 'redux/types'
 import Constants from '../constants'
-
-export const getUserAction: Action = () => ({
-  type: Constants.GET_USER,
+export const setUserAction: Action<SetUserPayload> = payload => ({
+  type: Constants.SET_USER_ASYNC,
+  payload,
 })

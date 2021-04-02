@@ -2,21 +2,31 @@ import Constants from './constants'
 
 export type UserActionPayloads = {}
 
+export interface SetUserPayload extends IUserReducerState {}
+
 export type Payloads = UserActionPayloads
 
 export interface RootReducerInterface {
-  user: IUserReducerState
+  readonly user: IUserReducerState
 }
 
 export interface IUserReducerState {
-  user: string
+  readonly email: string
+  readonly password: string
+  readonly name: string
+  readonly username: string
 }
 
 export interface Action<T = string | number | undefined> {
-  (payload?: T): {type: Constants; payload?: T}
+  (payload?: T): ActionObject<Constants, T>
 }
 
-export interface ReducerOptions<T = Payloads | undefined> {
-  type: Constants
-  payload?: T
+export interface ActionObject<Type = string, Payload = unknown> {
+  type: Type
+  payload?: Payload
+}
+
+export interface ReducerOptions<T = Payloads> {
+  readonly type: Constants
+  readonly payload?: T
 }
