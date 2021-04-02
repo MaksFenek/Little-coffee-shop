@@ -1,3 +1,4 @@
+import {ProductsCollection} from 'GeneralTypes'
 import Constants from './constants'
 
 //===== General Types =====
@@ -10,22 +11,23 @@ export interface IUserData {
 //===== Action Types =====
 
 export interface Action<T = string | number | undefined> {
-  (payload: T): ActionObject<Constants, T>
+  (payload?: T): ActionObject<Constants, T>
 }
 
 export interface ActionObject<Type = string, Payload = unknown> {
-  type: Type
-  payload: Payload
+  readonly type: Type
+  readonly payload?: Payload
 }
 
-export type UserActionPayloads = SetUserAsyncPayload | SetUserPayload
+export type UserActionPayloads = Readonly<SetUserAsyncPayload | SetUserPayload>
+export type ProductsActionPayloads = Readonly<IProductsReducerState>
 
 export interface SetUserAsyncPayload extends IUserData {}
 export interface SetUserPayload extends IUserData {
   readonly uid: string
 }
 
-export type Payloads = UserActionPayloads
+export type Payloads = Readonly<UserActionPayloads | ProductsActionPayloads>
 //===== Reducer Types =====
 
 export interface ReducerOptions<T = Payloads> {
@@ -35,8 +37,11 @@ export interface ReducerOptions<T = Payloads> {
 
 export interface RootReducerInterface {
   readonly user: IUserReducerState
+  readonly products: IProductsReducerState[]
 }
 
 export interface IUserReducerState extends IUserData {
   readonly uid: string
 }
+
+export interface IProductsReducerState extends ProductsCollection {}

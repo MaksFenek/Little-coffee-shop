@@ -2,25 +2,22 @@ import {applyMiddleware, combineReducers} from 'redux'
 import {createStore} from 'redux'
 
 import createSagaMiddleware from 'redux-saga'
+import {getAllProductsAsyncAction} from 'redux/actions/productsAction'
 import userReducer from 'redux/reducers/userReducer'
-import {watchSetUserAsync} from 'redux/sagas/userSaga'
+import {watchGetAllProductsAsync} from 'redux/sagas/productsSaga'
 import {RootReducerInterface} from 'redux/types'
+import productsReducer from './productsReducer'
 
 const rootReducer = combineReducers<RootReducerInterface>({
   user: userReducer,
+  products: productsReducer,
 })
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
 
-sagaMiddleware.run(watchSetUserAsync)
+sagaMiddleware.run(watchGetAllProductsAsync)
 
-store.dispatch({
-  type: 'SET_USER_ASYNC',
-  payload: {
-    email: 'arturvorokov@mail.ru',
-    password: 'djhjrjd090',
-  },
-})
+store.dispatch(getAllProductsAsyncAction())
 
 export default store

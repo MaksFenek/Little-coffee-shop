@@ -1,6 +1,8 @@
 enum Constants {
   SET_USER_ASYNC = 'SET_USER_ASYNC',
   SET_USER = 'SET_USER',
+  GET_ALL_PRODUCTS_ASYNC = 'GET_ALL_PRODUCTS_ASYNC',
+  GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS',
 }
 
 export default Constants

@@ -10,6 +10,7 @@ import SignUpPage from 'components/pages/SignUpPage'
 import SignInPage from 'components/pages/SignInPage'
 import {Provider} from 'react-redux'
 import store from 'redux/reducers'
+import {getAllProducts} from 'api/firebase'
 
 export type RootStackParamList = {
   Welcome: undefined
@@ -19,7 +20,7 @@ export type RootStackParamList = {
 export type Props = StackNavigationProp<RootStackParamList>
 
 const Stack = createStackNavigator<RootStackParamList>()
-
+getAllProducts()
 const App: React.FC = () => {
   return (
     <Provider store={store}>
