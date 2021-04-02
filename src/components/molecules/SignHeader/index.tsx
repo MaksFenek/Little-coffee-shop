@@ -1,5 +1,6 @@
 import React from 'react'
-import {StyleSheet, View, Image, ViewProps, ImageBackground} from 'react-native'
+import {View, Image, ViewProps, ImageBackground} from 'react-native'
+import styles from './styles'
 
 interface ISignHeader extends ViewProps {}
 
@@ -14,21 +15,5 @@ const SignHeader: React.FC<ISignHeader> = ({...props}) => {
     </View>
   )
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 0.5,
-    justifyContent: 'center',
-  },
-  bg: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
-  logo: {
-    height: 125,
-    width: 125,
-    alignSelf: 'center',
-  },
-})
 
 export default SignHeader

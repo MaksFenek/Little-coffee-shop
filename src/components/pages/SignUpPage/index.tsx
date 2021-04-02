@@ -1,7 +1,8 @@
 import React from 'react'
-import {StyleSheet, SafeAreaView, KeyboardAvoidingView} from 'react-native'
+import {SafeAreaView, KeyboardAvoidingView} from 'react-native'
 import {Input, Button} from 'react-native-elements'
 import SignHeader from 'components/molecules/SignHeader'
+import styles from './styles'
 
 const SignUpPage = () => {
   return (
@@ -19,19 +20,3 @@ const SignUpPage = () => {
 }
 
 export default SignUpPage
-
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-  },
-  form: {
-    flex: 0.5,
-    justifyContent: 'space-around',
-  },
-  button: {
-    height: 60,
-    backgroundColor: '#0D9F67',
-    borderRadius: 0,
-    margin: 10,
-  },
-})
