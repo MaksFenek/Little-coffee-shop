@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "352451444524",
+    "project_id": "little-coffee-shop-448ed",
+    "storage_bucket": "little-coffee-shop-448ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352451444524:android:ba38925dea72eb9a39b689",
+        "android_client_info": {
+          "package_name": "com.littlecoffeeshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352451444524-c5j6qm84514ed5vj6ieurpjf86kfskai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGAkjrKIsqPZSu1tvL5J0OLFhCO9Geb2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352451444524-c5j6qm84514ed5vj6ieurpjf86kfskai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
