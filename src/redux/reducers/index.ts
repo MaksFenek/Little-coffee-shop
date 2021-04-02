@@ -18,10 +18,8 @@ sagaMiddleware.run(watchSetUserAsync)
 store.dispatch({
   type: 'SET_USER_ASYNC',
   payload: {
-    email: 'hello',
-    password: 'hello',
-    name: 'hello',
-    username: 'hello',
+    email: 'arturvorokov@mail.ru',
+    password: 'djhjrjd090',
   },
 })
 

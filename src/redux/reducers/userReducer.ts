@@ -9,7 +9,7 @@ const initialState: IUserReducerState = {
   email: '',
   password: '',
   name: '',
-  username: '',
+  uid: '',
 }
 
 export default (
