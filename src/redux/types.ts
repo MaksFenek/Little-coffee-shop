@@ -20,7 +20,10 @@ export interface ActionObject<Type = string, Payload = unknown> {
 }
 
 export type UserActionPayloads = Readonly<SetUserAsyncPayload | SetUserPayload>
-export type ProductsActionPayloads = Readonly<IProductsReducerState>
+export type ProductsActionPayloads = Readonly<{
+  data: ProductsCollection
+  error: string
+}>
 
 export interface SetUserAsyncPayload extends IUserData {}
 export interface SetUserPayload extends IUserData {
@@ -28,20 +31,23 @@ export interface SetUserPayload extends IUserData {
 }
 
 export type Payloads = Readonly<UserActionPayloads | ProductsActionPayloads>
-//===== Reducer Types =====
 
+//===== Reducer Types =====
 export interface ReducerOptions<T = Payloads> {
   readonly type: Constants
-  readonly payload?: T
+  readonly payload: T
 }
 
 export interface RootReducerInterface {
   readonly user: IUserReducerState
-  readonly products: IProductsReducerState[]
+  readonly products: IProductsReducerState
 }
 
 export interface IUserReducerState extends IUserData {
   readonly uid: string
 }
 
-export interface IProductsReducerState extends ProductsCollection {}
+export interface IProductsReducerState {
+  products: ProductsCollection | undefined
+  error: string
+}

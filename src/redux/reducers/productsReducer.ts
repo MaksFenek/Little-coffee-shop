@@ -5,17 +5,22 @@ import {
   ProductsActionPayloads,
 } from 'redux/types'
 
-const initialState: IProductsReducerState[] = []
+const initialState: IProductsReducerState = {
+  products: undefined,
+  error: '',
+}
 
 export default (
   state = initialState,
   {type, payload}: ReducerOptions<ProductsActionPayloads>,
-): IProductsReducerState[] => {
+): IProductsReducerState => {
   switch (type) {
     case Constants.GET_ALL_PRODUCTS:
-      console.log(payload)
+      return {...state, products: payload.data}
 
-      return {...state, ...payload}
+    case Constants.SET_PRODUCT_ERROR:
+      return {...state, error: payload.error}
+
     default:
       return state
   }
