@@ -4,7 +4,7 @@ import {getAllProducts} from 'api/firebase'
 import {
   getAllProductsAction,
   setProductErrorAction,
-} from 'redux/actions/productsAction'
+} from 'redux/products/productsAction'
 
 type getAllProductsType = SagaReturnType<typeof getAllProducts>
 

@@ -9,7 +9,7 @@ import {
 import SignUpPage from 'components/pages/SignUpPage'
 import SignInPage from 'components/pages/SignInPage'
 import {Provider} from 'react-redux'
-import store from 'redux/reducers'
+import store from 'redux/rootReducer'
 import {getAllProducts} from 'api/firebase'
 
 export type RootStackParamList = {
