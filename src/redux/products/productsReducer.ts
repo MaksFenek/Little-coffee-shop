@@ -6,7 +6,7 @@ import {
 } from 'redux/types'
 
 const initialState: IProductsReducerState = {
-  products: undefined,
+  products: [],
   error: '',
 }
 

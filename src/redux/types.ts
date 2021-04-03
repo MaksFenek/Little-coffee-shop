@@ -21,7 +21,7 @@ export interface ActionObject<Type = string, Payload = unknown> {
 
 export type UserActionPayloads = Readonly<SetUserAsyncPayload | SetUserPayload>
 export type ProductsActionPayloads = Readonly<{
-  data: ProductsCollection
+  data: ProductsCollection[]
   error: string
 }>
 
@@ -48,6 +48,6 @@ export interface IUserReducerState extends IUserData {
 }
 
 export interface IProductsReducerState {
-  products: ProductsCollection | undefined
+  products: ProductsCollection[] | []
   error: string
 }

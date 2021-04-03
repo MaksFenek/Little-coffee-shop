@@ -1,52 +1,42 @@
 import Card from 'components/molecules/Card'
-import React from 'react'
-import {View, Text, FlatList} from 'react-native'
+import {ProductInfo} from 'GeneralTypes'
+import React, {useEffect, useState} from 'react'
+import {View, FlatList} from 'react-native'
+import {useSelector} from 'react-redux'
+import {RootReducerInterface} from 'redux/types'
 import styles from './styles'
 
-const CustomCard = () => {
-  const data = [
-    {
-      title: 'Hello',
-      desctiprion: 'hello',
-      photo:
-        'https://img.freepik.com/free-vector/realistic-coffee-background-with-drawings_79603-603.jpg?size=626&ext=jpg',
-    },
-    {
-      title: 'Hello',
-      desctiprion: 'hello',
-      photo:
-        'https://img.freepik.com/free-vector/realistic-coffee-background-with-drawings_79603-603.jpg?size=626&ext=jpg',
-    },
-    {
-      title: 'How are you what are you doing',
-      desctiprion: 'hello',
-      photo:
-        'https://img.freepik.com/free-vector/realistic-coffee-background-with-drawings_79603-603.jpg?size=626&ext=jpg',
-    },
-    {
-      title: 'Hello',
-      desctiprion: 'hello',
-      photo:
-        'https://img.freepik.com/free-vector/realistic-coffee-background-with-drawings_79603-603.jpg?size=626&ext=jpg',
-    },
-  ]
+const CustomCard: React.FC = () => {
+  const state = useSelector((store: RootReducerInterface) => store.products)
+  const [data, setData] = useState<ProductInfo[]>()
+
+  useEffect(() => {
+    setData(
+      state.products.map(item => ({
+        name: item.name,
+        photo: item.photo,
+        description: item.description,
+      })),
+    )
+  }, [state.products])
+
   return (
-    <View style={{flex: 1}}>
-      <FlatList
-        data={data}
-        numColumns={2}
-        columnWrapperStyle={{
-          justifyContent: 'space-evenly',
-        }}
-        renderItem={({item}) => (
-          <Card
-            title={item.title}
-            description={item.desctiprion}
-            photo={item.photo}
-          />
-        )}
-        keyExtractor={({item}, index) => index}
-      />
+    <View style={styles.container}>
+      {state.products.length !== 0 && (
+        <FlatList
+          data={data}
+          numColumns={2}
+          columnWrapperStyle={styles.columnWrapper}
+          renderItem={({item}) => (
+            <Card
+              title={item.name}
+              description={item.description}
+              photo={item.photo}
+            />
+          )}
+          keyExtractor={item => item.name}
+        />
+      )}
     </View>
   )
 }

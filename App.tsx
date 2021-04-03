@@ -8,6 +8,7 @@ import {
 } from '@react-navigation/stack'
 import SignUpPage from 'components/pages/SignUpPage'
 import SignInPage from 'components/pages/SignInPage'
+import MenuPage from 'components/pages/MenuPage'
 import {Provider} from 'react-redux'
 import store from 'redux/rootReducer'
 import {getAllProducts} from 'api/firebase'
@@ -16,6 +17,7 @@ export type RootStackParamList = {
   Welcome: undefined
   SignUp: undefined
   SignIn: undefined
+  Menu: undefined
 }
 export type Props = StackNavigationProp<RootStackParamList>
 
@@ -25,7 +27,12 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Navigator initialRouteName="Menu">
+          <Stack.Screen
+            name="Menu"
+            options={{headerTitleAlign: 'center'}}
+            component={MenuPage}
+          />
           <Stack.Screen
             name="Welcome"
             options={{headerShown: false}}
