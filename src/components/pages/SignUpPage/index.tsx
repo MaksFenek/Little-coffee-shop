@@ -4,7 +4,7 @@ import {Input, Button} from 'react-native-elements'
 import SignHeader from 'components/molecules/SignHeader'
 import styles from './styles'
 
-const SignUpPage = () => {
+const SignUpPage: React.FC = () => {
   return (
     <SafeAreaView style={styles.main}>
       <SignHeader />

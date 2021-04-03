@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import {View, Image, ViewProps, ImageBackground} from 'react-native'
 import styles from './styles'
 
@@ -16,4 +16,4 @@ const SignHeader: React.FC<ISignHeader> = ({...props}) => {
   )
 }
 
-export default SignHeader
+export default memo(SignHeader)

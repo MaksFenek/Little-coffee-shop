@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import {
   ImageBackground,
   TouchableOpacity,
@@ -32,4 +32,4 @@ const index: React.FC<ICard> = ({title, description, photo, ...props}) => {
   )
 }
 
-export default index
+export default memo(index)
