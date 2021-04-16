@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler'
-import React from 'react'
+import React, {useCallback, useRef} from 'react'
+import {DrawerLayoutAndroid} from 'react-native'
 import WelcomePage from 'components/pages/WelcomePage'
 import {NavigationContainer} from '@react-navigation/native'
 import {
@@ -11,7 +12,7 @@ import SignInPage from 'components/pages/SignInPage'
 import MenuPage from 'components/pages/MenuPage'
 import {Provider} from 'react-redux'
 import store from 'redux/rootReducer'
-import {getAllProducts} from 'api/firebase'
+import MenuIcon from 'components/atoms/MenuIcon'
 
 export type RootStackParamList = {
   Welcome: undefined
@@ -21,24 +22,33 @@ export type RootStackParamList = {
 }
 export type Props = StackNavigationProp<RootStackParamList>
 
-const Stack = createStackNavigator<RootStackParamList>()
-getAllProducts()
+const {Navigator, Screen} = createStackNavigator<RootStackParamList>()
 const App: React.FC = () => {
+  const drawer = useRef<DrawerLayoutAndroid>(null)
+
+  const handlePress = useCallback(() => {
+    drawer.current!.openDrawer()
+  }, [])
+
+  const LinkedMenuPage: React.FC = () => <MenuPage drawerRef={drawer} />
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Menu">
-          <Stack.Screen
+        <Navigator initialRouteName="Menu">
+          <Screen
             name="Menu"
-            options={{headerTitleAlign: 'center'}}
-            component={MenuPage}
+            options={{
+              headerTitleAlign: 'center',
+              headerLeft: () => <MenuIcon onPress={handlePress} />,
+            }}
+            component={LinkedMenuPage}
           />
-          <Stack.Screen
+          <Screen
             name="Welcome"
             options={{headerShown: false}}
             component={WelcomePage}
           />
-          <Stack.Screen
+          <Screen
             name="SignUp"
             options={{
               headerTransparent: true,
@@ -50,7 +60,7 @@ const App: React.FC = () => {
             }}
             component={SignUpPage}
           />
-          <Stack.Screen
+          <Screen
             name="SignIn"
             options={{
               headerTransparent: true,
@@ -62,7 +72,7 @@ const App: React.FC = () => {
             }}
             component={SignInPage}
           />
-        </Stack.Navigator>
+        </Navigator>
       </NavigationContainer>
     </Provider>
   )
