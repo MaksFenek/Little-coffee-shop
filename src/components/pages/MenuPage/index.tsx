@@ -1,10 +1,12 @@
+import {useNavigation} from '@react-navigation/native'
 import Card from 'components/molecules/Card'
 import NavigationMenu from 'components/molecules/NavigationMenu'
 import {ProductInfo} from 'GeneralTypes'
-import React, {useEffect, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import {View, FlatList, DrawerLayoutAndroid} from 'react-native'
 import {useSelector} from 'react-redux'
 import {RootReducerInterface} from 'redux/types'
+import {Props} from '../../../../App'
 import styles from './styles'
 
 interface IMenuPage {
@@ -14,6 +16,7 @@ interface IMenuPage {
 const MenuPage: React.FC<IMenuPage> = ({drawerRef}) => {
   const state = useSelector((store: RootReducerInterface) => store.products)
   const [data, setData] = useState<ProductInfo[]>()
+  const {navigate} = useNavigation<Props>()
 
   useEffect(() => {
     setData(
@@ -24,6 +27,13 @@ const MenuPage: React.FC<IMenuPage> = ({drawerRef}) => {
       })),
     )
   }, [state.products])
+
+  const handleNavigate = useCallback(
+    (title: string) => {
+      navigate('Product', {name: title})
+    },
+    [navigate],
+  )
 
   return (
     <DrawerLayoutAndroid
@@ -42,6 +52,7 @@ const MenuPage: React.FC<IMenuPage> = ({drawerRef}) => {
                 title={item.name}
                 description={item.description}
                 photo={item.photo}
+                navigateFunction={handleNavigate}
               />
             )}
             keyExtractor={item => item.name}

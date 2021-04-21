@@ -51,6 +51,7 @@ const App: React.FC = () => {
             name="Product"
             options={{
               headerTitleAlign: 'center',
+              headerTransparent: true,
             }}
             component={ProductPage}
           />

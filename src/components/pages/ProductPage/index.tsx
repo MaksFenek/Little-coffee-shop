@@ -1,8 +1,9 @@
-import {RouteProp, useNavigation} from '@react-navigation/native'
+import {useNavigation} from '@react-navigation/native'
 import {StackScreenProps} from '@react-navigation/stack'
-import {ProductsCollection, ProductsItem} from 'GeneralTypes'
-import React, {useEffect, useState} from 'react'
-import {View, Text} from 'react-native'
+import Card from 'components/molecules/Card'
+import {ProductsCollection} from 'GeneralTypes'
+import React, {useCallback, useEffect, useState} from 'react'
+import {View, Text, ImageBackground, FlatList} from 'react-native'
 import {useSelector} from 'react-redux'
 import {RootReducerInterface} from 'redux/types'
 import {Props, RootStackParamList} from '../../../../App'
@@ -29,7 +30,50 @@ const ProductPage: React.FC<IProductPage> = ({route}) => {
     }
   }, [state])
 
-  return <View>{state?.name && <Text>{state.description}</Text>}</View>
+  const handleNavigate = useCallback((title: string) => {
+    console.log(title)
+  }, [])
+
+  return products ? (
+    <View style={styles.main}>
+      <FlatList
+        initialNumToRender={6}
+        ListHeaderComponent={
+          <View style={styles.header}>
+            <ImageBackground
+              style={styles.headerImg}
+              source={require('assets/bg.jpg')}>
+              <View style={styles.overlay} />
+              <Text style={styles.title}>{products.description}</Text>
+            </ImageBackground>
+          </View>
+        }
+        data={products.products}
+        numColumns={2}
+        columnWrapperStyle={styles.columnWrapper}
+        ListEmptyComponent={
+          <View>
+            <Text style={styles.emptyText}>
+              Sorry, but there is no anything yet :(
+            </Text>
+          </View>
+        }
+        renderItem={({item}) => (
+          <Card
+            title={item.name}
+            description={item.description}
+            photo={item.photo}
+            navigateFunction={handleNavigate}
+          />
+        )}
+        keyExtractor={item => item.name}
+      />
+    </View>
+  ) : (
+    <View style={styles.main}>
+      <Text style={styles.emptyText}>Sorry, but there is no anything :(</Text>
+    </View>
+  )
 }
 
 export default ProductPage
