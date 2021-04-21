@@ -13,16 +13,19 @@ import MenuPage from 'components/pages/MenuPage'
 import {Provider} from 'react-redux'
 import store from 'redux/rootReducer'
 import MenuIcon from 'components/atoms/MenuIcon'
+import ProductPage from 'components/pages/ProductPage'
 
 export type RootStackParamList = {
   Welcome: undefined
   SignUp: undefined
   SignIn: undefined
   Menu: undefined
+  Product: {name: string}
 }
 export type Props = StackNavigationProp<RootStackParamList>
 
 const {Navigator, Screen} = createStackNavigator<RootStackParamList>()
+
 const App: React.FC = () => {
   const drawer = useRef<DrawerLayoutAndroid>(null)
 
@@ -31,6 +34,7 @@ const App: React.FC = () => {
   }, [])
 
   const LinkedMenuPage: React.FC = () => <MenuPage drawerRef={drawer} />
+
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -42,6 +46,13 @@ const App: React.FC = () => {
               headerLeft: () => <MenuIcon onPress={handlePress} />,
             }}
             component={LinkedMenuPage}
+          />
+          <Screen
+            name="Product"
+            options={{
+              headerTitleAlign: 'center',
+            }}
+            component={ProductPage}
           />
           <Screen
             name="Welcome"

@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native'
 import React, {memo} from 'react'
 import {
   ImageBackground,
@@ -6,6 +7,7 @@ import {
   View,
 } from 'react-native'
 import {Card} from 'react-native-elements'
+import {Props} from '../../../../App'
 import styles from './styles'
 
 interface ICard extends TouchableOpacityProps {
@@ -14,10 +16,15 @@ interface ICard extends TouchableOpacityProps {
   photo: string
 }
 
-const index: React.FC<ICard> = ({title, description, photo, ...props}) => {
+const MyCard: React.FC<ICard> = ({title, description, photo, ...props}) => {
+  const {navigate} = useNavigation<Props>()
+
+  const handlePress = () => {
+    navigate('Product', {name: title})
+  }
   return (
     <Card containerStyle={styles.container}>
-      <TouchableOpacity {...props}>
+      <TouchableOpacity onPress={handlePress} {...props}>
         <View>
           <ImageBackground style={styles.imageBg} source={{uri: photo}} />
         </View>
@@ -32,4 +39,4 @@ const index: React.FC<ICard> = ({title, description, photo, ...props}) => {
   )
 }
 
-export default memo(index)
+export default memo(MyCard)

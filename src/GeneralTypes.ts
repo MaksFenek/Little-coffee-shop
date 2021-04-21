@@ -1,5 +1,5 @@
 export interface ProductsCollection extends ProductInfo {
-  readonly products: [ProductsItem]
+  readonly products: ProductsItem[]
 }
 
 export interface ProductsItem extends ProductInfo {
